@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://onenorthcapital.com/sitemap.xml 

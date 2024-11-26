@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { Button } from './ui/button';
 import { Input, Textarea } from './ui/form';
+import { useRateLimit } from '../hooks/useRateLimit';
 import type { Translations } from '../types/translations';
 
 interface ConsultationFormProps {
@@ -35,9 +36,32 @@ export function ConsultationForm({ isOpen, onClose, t }: ConsultationFormProps) 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
+  // Initialize rate limiting with 3 attempts per hour
+  const { isBlocked, remainingTime, incrementAttempt, attemptsLeft } = useRateLimit({
+    maxAttempts: 3,
+    timeWindow: 3600000 // 1 hour in milliseconds
+  });
+
   useEffect(() => {
     emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   }, []);
+
+  // Add escape key handler
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen, onClose]);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -54,13 +78,20 @@ export function ConsultationForm({ isOpen, onClose, t }: ConsultationFormProps) 
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+    const value = e.target.value.replace(/\D/g, '');
     setFormData(prev => ({ ...prev, phone: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
+    
+    // Check if rate limited
+    if (isBlocked) {
+      const minutes = Math.ceil(remainingTime / 60000);
+      setSubmitError(`Too many attempts. Please try again in ${minutes} minutes.`);
+      return;
+    }
 
     setIsSubmitting(true);
     setSubmitError(null);
@@ -80,6 +111,9 @@ export function ConsultationForm({ isOpen, onClose, t }: ConsultationFormProps) 
         templateParams
       );
       
+      // Increment attempt count only on successful submission
+      incrementAttempt();
+      
       setIsSubmitted(true);
       setTimeout(() => {
         onClose();
@@ -97,7 +131,12 @@ export function ConsultationForm({ isOpen, onClose, t }: ConsultationFormProps) 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="consultation-form-title"
+    >
       <div className="relative w-full max-w-md bg-white rounded-lg shadow-xl p-6">
         <button
           onClick={onClose}
@@ -107,7 +146,7 @@ export function ConsultationForm({ isOpen, onClose, t }: ConsultationFormProps) 
           <X size={24} />
         </button>
         
-        <h3 className="text-2xl font-bold text-[#222831] mb-6">{t.form.title}</h3>
+        <h3 id="consultation-form-title" className="text-2xl font-bold text-[#222831] mb-6">{t.form.title}</h3>
         
         {isSubmitted ? (
           <div className="text-center py-8">
@@ -118,6 +157,13 @@ export function ConsultationForm({ isOpen, onClose, t }: ConsultationFormProps) 
             {submitError && (
               <div className="p-3 bg-red-100 text-red-700 rounded-md">
                 {submitError}
+              </div>
+            )}
+
+            {/* Show attempts remaining if less than 2 */}
+            {attemptsLeft < 2 && !isBlocked && (
+              <div className="p-3 bg-yellow-100 text-yellow-700 rounded-md">
+                {`You have ${attemptsLeft} submission${attemptsLeft === 1 ? '' : 's'} remaining.`}
               </div>
             )}
 
@@ -177,8 +223,8 @@ export function ConsultationForm({ isOpen, onClose, t }: ConsultationFormProps) 
 
             <Button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-[#DBC078] text-[#222831] hover:bg-[#DBC078]/90"
+              disabled={isSubmitting || isBlocked}
+              className="w-full bg-[#DBC078] text-[#222831] hover:bg-[#DBC078]/90 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? t.form.sending : t.form.submit}
             </Button>

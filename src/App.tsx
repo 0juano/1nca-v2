@@ -8,6 +8,7 @@ import { OurPhilosophy } from './components/sections/OurPhilosophy';
 import { Services } from './components/sections/Services';
 import { Contact } from './components/sections/Contact';
 import { Footer } from './components/Footer';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 function App() {
   const containerRef = useRef(null);
@@ -24,27 +25,40 @@ function App() {
   if (!t) return null;
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-[#222831] text-white overflow-hidden">
-      <Navigation t={t} language={language} toggleLanguage={toggleLanguage} />
-      <Hero t={t} y={y} />
-      <div className="relative z-10">
-        <WhyChooseUs t={t} opacity={opacity} />
-        <OurPhilosophy t={t} />
-        <Services t={t} />
-        <Contact t={t} />
+    <ErrorBoundary>
+      <div ref={containerRef} className="relative min-h-screen bg-[#222831] text-white overflow-hidden" role="document">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-[#DBC078] focus:text-[#222831]"
+          role="navigation"
+          aria-label="Skip to main content"
+        >
+          Skip to main content
+        </a>
+        
+        <Navigation t={t} language={language} toggleLanguage={toggleLanguage} />
+        <main id="main-content" role="main" aria-label="Main content">
+          <Hero t={t} y={y} />
+          <div className="relative z-10">
+            <WhyChooseUs t={t} opacity={opacity} />
+            <OurPhilosophy t={t} />
+            <Services t={t} />
+            <Contact t={t} />
+          </div>
+        </main>
+        <Footer t={t} role="contentinfo" />
+        
+        <style>
+          {`
+            .bg-grid-pattern {
+              background-image: linear-gradient(to right, rgba(219, 192, 120, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(219, 192, 120, 0.1) 1px, transparent 1px);
+              background-size: 32px 32px;
+            }
+          `}
+        </style>
       </div>
-      <Footer t={t} />
-      
-      <style>
-        {`
-          .bg-grid-pattern {
-            background-image: linear-gradient(to right, rgba(219, 192, 120, 0.1) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(219, 192, 120, 0.1) 1px, transparent 1px);
-            background-size: 32px 32px;
-          }
-        `}
-      </style>
-    </div>
+    </ErrorBoundary>
   );
 }
 

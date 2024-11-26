@@ -4,10 +4,30 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta name="description" content="One North Capital Advisors - Expert wealth management services with institutional-grade investment expertise. Specializing in long-term family wealth preservation and growth." />
+    <meta name="keywords" content="wealth management, financial advisor, investment management, family office, portfolio management" />
+    <meta name="author" content="One North Capital Advisors" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self';" />
+    
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="One North Capital Advisors - Expert Wealth Management" />
+    <meta property="og:description" content="Specialized wealth management services with institutional-grade investment expertise." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://onenorthcapital.com" />
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/src/main.tsx" as="script" type="module" />
+    <link rel="preload" href="/src/index.css" as="style" />
+    
+    <title>One North Capital Advisors</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" role="application" aria-label="One North Capital Advisors website"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
