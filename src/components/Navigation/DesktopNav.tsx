@@ -20,9 +20,11 @@ export function DesktopNav({ t, language, toggleLanguage }: DesktopNavProps) {
           transition={{ duration: 0.5 }}
           className="flex items-center space-x-2"
         >
-          <div className="w-16 h-16 bg-[#DBC078] rounded-sm flex items-center justify-center">
-            <span className="text-[#222831] font-bold text-xl">1N</span>
-          </div>
+          <img 
+            src="/assets/LOOKA-logo-3.png" 
+            alt="1NCA Logo" 
+            className="h-16 w-auto object-contain"
+          />
         </motion.div>
       </a>
       <div className="flex items-center space-x-12 text-base">

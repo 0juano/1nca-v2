@@ -21,9 +21,11 @@ export function MobileNav({ t, toggleLanguage }: MobileNavProps) {
   return (
     <div className="lg:hidden w-full px-4 py-4 flex justify-between items-center">
       <a href="/" className="text-white hover:text-[#DBC078] transition-colors">
-        <div className="w-8 h-8 bg-[#DBC078] rounded-sm flex items-center justify-center">
-          <span className="text-[#222831] font-bold text-sm">1N</span>
-        </div>
+        <img 
+          src="/assets/LOOKA-logo-3.png" 
+          alt="1NCA Logo" 
+          className="h-10 w-auto object-contain"
+        />
       </a>
       <div className="flex items-center gap-4">
         <button 
