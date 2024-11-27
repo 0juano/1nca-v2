@@ -21,7 +21,7 @@ export function DesktopNav({ t, language, toggleLanguage }: DesktopNavProps) {
           className="flex items-center space-x-2"
         >
           <img 
-            src="/assets/LOOKA-logo-3.png" 
+            src="/assets/logo-1n.png" 
             alt="1NCA Logo" 
             className="h-16 w-auto object-contain"
           />
