@@ -136,6 +136,11 @@ export function ConsultationForm({ isOpen, onClose, t }: ConsultationFormProps) 
       role="dialog"
       aria-modal="true"
       aria-labelledby="consultation-form-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
     >
       <div className="relative w-full max-w-md bg-white rounded-lg shadow-xl p-6">
         <button
