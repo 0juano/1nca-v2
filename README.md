@@ -109,3 +109,62 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Design inspiration from modern financial websites
 - Icons by [Lucide](https://lucide.dev/)
 - Animations powered by [Framer Motion](https://www.framer.com/motion/)
+
+## Deployment
+
+### Prerequisites
+- Node.js 16.x or later
+- npm or yarn
+- Proper environment variables set up (see Environment Setup)
+
+### Environment Setup
+1. Create a `.env` file in the root directory
+2. Add required environment variables (refer to `.env.example` for required variables)
+
+### Build and Deploy
+1. Build the project:
+```bash
+npm run build
+```
+
+2. The built files will be in the `dist` directory, ready for deployment.
+
+### Deployment Options
+
+#### Static Hosting (Recommended)
+The built project can be deployed to any static hosting service:
+- Vercel (recommended)
+- Netlify
+- GitHub Pages
+- AWS S3 + CloudFront
+
+#### Manual Deployment
+1. Copy the contents of the `dist` directory to your web server
+2. Configure your web server to serve the application as a static site
+3. Ensure all routes are redirected to `index.html` for client-side routing
+
+### Post-Deployment Checklist
+- [ ] Verify all environment variables are properly set
+- [ ] Test all routes and navigation
+- [ ] Confirm bilingual functionality
+- [ ] Check responsive design on multiple devices
+- [ ] Verify all animations and transitions
+- [ ] Test contact form functionality
+- [ ] Confirm proper SSL/TLS configuration
+
+## Current Project Structure
+
+```
+├── src/               # Source code
+│   ├── components/    # React components
+│   ├── hooks/        # Custom React hooks
+│   ├── types/        # TypeScript types
+│   └── utils/        # Utility functions
+├── public/           # Static assets
+├── .env             # Environment variables
+├── index.html       # Entry HTML file
+├── vite.config.ts   # Vite configuration
+├── tailwind.config.js # Tailwind CSS configuration
+├── tsconfig.json    # TypeScript configuration
+└── package.json     # Project dependencies and scripts
+```

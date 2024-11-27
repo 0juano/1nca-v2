@@ -3,8 +3,8 @@ import { translations } from '../data/translations';
 import type { Translations } from '../types/translations';
 
 export function useTranslation() {
-  const [language, setLanguage] = useState<'en' | 'es'>('en');
-  const [t, setT] = useState<Translations>(translations.en);
+  const [language, setLanguage] = useState<'en' | 'es'>('es');
+  const [t, setT] = useState<Translations>(translations.es);
 
   useEffect(() => {
     setT(translations[language]);
