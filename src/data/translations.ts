@@ -9,7 +9,7 @@ export const translations: Record<string, Translations> = {
       contact: "Contact",
     },
     hero: {
-      subtitle: "PERMANENT WEALTH MANAGEMENT",
+      subtitle: "WEALTH MANAGEMENT",
       title: {
         line1: "experts in",
         line2: "private",
@@ -132,7 +132,7 @@ export const translations: Record<string, Translations> = {
       contact: "Contacto",
     },
     hero: {
-      subtitle: "GESTIÓN PATRIMONIAL PERMANENTE",
+      subtitle: "GESTIÓN PATRIMONIAL",
       title: {
         line1: "expertos en",
         line2: "gestión",

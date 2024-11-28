@@ -47,14 +47,15 @@ export function Hero({ t, y }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <Button 
+            <a 
+              href="#about"
               onClick={(e) => scrollToSection(e, 'about')}
-              className="w-full sm:w-auto min-w-[160px] h-[48px] sm:h-[56px] bg-[#DBC078] text-[#222831] hover:bg-[#DBC078]/90 text-sm sm:text-base flex items-center justify-center"
+              className="w-full sm:w-[100px] h-[32px] sm:h-[36px] bg-[#DBC078] text-[#222831] hover:bg-[#DBC078]/90 text-xs sm:text-sm flex items-center justify-start px-2 rounded-md font-medium transition-colors no-underline overflow-hidden"
             >
               <span className="whitespace-nowrap">
                 {t.hero.cta}
               </span>
-            </Button>
+            </a>
           </motion.div>
         </div>
       </div>
