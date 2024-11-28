@@ -30,7 +30,7 @@ export function MobileNav({ t, toggleLanguage }: MobileNavProps) {
       <div className="flex items-center gap-4">
         <button 
           onClick={toggleLanguage} 
-          className="text-white hover:text-[#DBC078] transition-colors"
+          className="text-white active:text-[#DBC078] hover:text-[#DBC078] transition-colors touch-manipulation"
           aria-label="Toggle language"
         >
           <Globe size={20} />
