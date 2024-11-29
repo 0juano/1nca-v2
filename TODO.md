@@ -4,7 +4,8 @@
 - [ ] Create a jm@onenorth.capital email address
 
 ## In Progress
-- [ ] Add items here
+- [ ] Create a 2 pager of my investment principles to share to prospects. 
+  - [ ] Where could I include this in the website?
 
 ## Future Enhancements
 - [ ] Add newsletter subscription system for market updates and insights
