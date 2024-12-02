@@ -9,6 +9,7 @@ import { Services } from './components/sections/Services';
 import { Contact } from './components/sections/Contact';
 import { Footer } from './components/Footer';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { AboutUs } from './components/sections/AboutUs';
 
 function App() {
   const containerRef = useRef(null);
@@ -44,6 +45,7 @@ function App() {
             <OurPhilosophy t={t} />
             <Services t={t} />
             <Contact t={t} />
+            <AboutUs t={t} />
           </div>
         </main>
         <Footer t={t} role="contentinfo" />

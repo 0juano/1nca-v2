@@ -122,6 +122,51 @@ export const translations: Record<string, Translations> = {
         emailInvalid: "Please enter a valid email address",
         phoneInvalid: "Please enter only numbers"
       }
+    },
+    aboutUs: {
+      title: "About Us",
+      summary: "Juan Otero is an investor with over 15 years of experience, specializing in emerging markets, fixed income and corporate analysis. Former Principal at PGIM Fixed Income and Senior Analyst at Temasek's Seatown Holdings.",
+      expertise: {
+        fixedIncome: {
+          title: "Asset Management Expert",
+          text: "15+ years buy side investing"
+        },
+        cfa: {
+          title: "CFA Charterholder",
+          text: "Since 2011"
+        },
+        global: {
+          title: "Global Experience",
+          text: "Asia, LatAm, Middle East"
+        },
+        portfolio: {
+          title: "Portfolio Management",
+          text: "Credit Analysis & Wealth Management"
+        }
+      },
+      institutionalBackground: "Institutional Background",
+      testimonials: {
+        title: "What Our Clients Say",
+        items: [
+          {
+            quote: "Juan Manuel's institutional experience and personal approach to wealth management has been invaluable for our family office.",
+            author: "Carlos R.",
+            role: "Family Office Director",
+            company: "Private Family Office"
+          },
+          {
+            quote: "His deep understanding of emerging markets and fixed income has helped us navigate complex market conditions.",
+            author: "Maria S.",
+            role: "Investment Committee Member",
+            company: "Private Investment Group"
+          },
+          {
+            quote: "The combination of institutional expertise with personalized attention sets One North Capital apart.",
+            author: "David L.",
+            role: "Private Client",
+          }
+        ]
+      }
     }
   },
   es: {
@@ -244,6 +289,51 @@ export const translations: Record<string, Translations> = {
         emailRequired: "El correo electrónico es requerido",
         emailInvalid: "Por favor ingrese un correo electrónico válido",
         phoneInvalid: "Por favor ingrese solo números"
+      }
+    },
+    aboutUs: {
+      title: "Sobre Nosotros",
+      summary: "Juan Otero es un inversor con más de 15 años de experiencia, especializado en mercados emergentes, renta fija y análisis corporativo. Ex Principal en PGIM Fixed Income y Analista Senior en Seatown Holdings de Temasek.",
+      expertise: {
+        fixedIncome: {
+          title: "Experto en Gestión de Activos",
+          text: "15+ años de inversión buy side"
+        },
+        cfa: {
+          title: "CFA Charterholder",
+          text: "Desde 2011"
+        },
+        global: {
+          title: "Experiencia Global",
+          text: "Asia, LatAm, Medio Oriente"
+        },
+        portfolio: {
+          title: "Gestión de Carteras",
+          text: "Análisis de Crédito y Gestión Patrimonial"
+        }
+      },
+      institutionalBackground: "Experiencia Institucional",
+      testimonials: {
+        title: "Lo Que Dicen Nuestros Clientes",
+        items: [
+          {
+            quote: "La experiencia institucional de Juan Manuel y su enfoque personal en la gestión patrimonial ha sido invaluable para nuestra oficina familiar.",
+            author: "Carlos R.",
+            role: "Director de Family Office",
+            company: "Family Office Privado"
+          },
+          {
+            quote: "Su profundo conocimiento de mercados emergentes y renta fija nos ha ayudado a navegar condiciones de mercado complejas.",
+            author: "María S.",
+            role: "Miembro del Comité de Inversiones",
+            company: "Grupo de Inversión Privado"
+          },
+          {
+            quote: "La combinación de experiencia institucional con atención personalizada distingue a One North Capital.",
+            author: "David L.",
+            role: "Cliente Privado",
+          }
+        ]
       }
     }
   }

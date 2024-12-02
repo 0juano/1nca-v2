@@ -79,4 +79,36 @@ export interface Translations {
       phoneInvalid: string;
     };
   };
+  aboutUs: {
+    title: string;
+    summary: string;
+    expertise: {
+      fixedIncome: {
+        title: string;
+        text: string;
+      };
+      cfa: {
+        title: string;
+        text: string;
+      };
+      global: {
+        title: string;
+        text: string;
+      };
+      portfolio: {
+        title: string;
+        text: string;
+      };
+    };
+    institutionalBackground: string;
+    testimonials: {
+      title: string;
+      items: Array<{
+        quote: string;
+        author: string;
+        role: string;
+        company?: string;
+      }>;
+    };
+  };
 }
