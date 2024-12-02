@@ -4,6 +4,7 @@ export interface Translations {
     ourPhilosophy: string;
     services: string;
     contact: string;
+    aboutUs: string;
   };
   hero: {
     subtitle: string;

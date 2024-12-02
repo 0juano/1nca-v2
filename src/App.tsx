@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from './hooks/useTranslation';
 import { Navigation } from './components/Navigation/Navigation';
@@ -9,9 +9,10 @@ import { Services } from './components/sections/Services';
 import { Contact } from './components/sections/Contact';
 import { Footer } from './components/Footer';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { AboutUs } from './components/sections/AboutUs';
+import { AboutUsModal } from './components/AboutUsModal';
 
 function App() {
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -37,7 +38,12 @@ function App() {
           Skip to main content
         </a>
         
-        <Navigation t={t} language={language} toggleLanguage={toggleLanguage} />
+        <Navigation 
+          t={t} 
+          language={language} 
+          toggleLanguage={toggleLanguage}
+          onAboutClick={() => setIsAboutModalOpen(true)}
+        />
         <main id="main-content" role="main" aria-label="Main content">
           <Hero t={t} y={y} />
           <div className="relative z-10">
@@ -45,10 +51,15 @@ function App() {
             <OurPhilosophy t={t} />
             <Services t={t} />
             <Contact t={t} />
-            <AboutUs t={t} />
           </div>
         </main>
         <Footer t={t} role="contentinfo" />
+        
+        <AboutUsModal 
+          isOpen={isAboutModalOpen}
+          onClose={() => setIsAboutModalOpen(false)}
+          t={t}
+        />
         
         <style>
           {`

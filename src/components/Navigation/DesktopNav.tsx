@@ -8,9 +8,10 @@ interface DesktopNavProps {
   t: Translations;
   language: string;
   toggleLanguage: () => void;
+  onAboutClick: () => void;
 }
 
-export function DesktopNav({ t, language, toggleLanguage }: DesktopNavProps) {
+export function DesktopNav({ t, language, toggleLanguage, onAboutClick }: DesktopNavProps) {
   return (
     <div className="hidden lg:flex w-full px-12 py-8 justify-between items-center">
       <a href="/" className="text-white hover:text-[#DBC078] transition-colors">
@@ -32,6 +33,7 @@ export function DesktopNav({ t, language, toggleLanguage }: DesktopNavProps) {
         <a href="#philosophy" onClick={(e) => scrollToSection(e, 'philosophy')} className="text-white hover:text-[#DBC078] transition-colors">{t.nav.ourPhilosophy}</a>
         <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="text-white hover:text-[#DBC078] transition-colors">{t.nav.services}</a>
         <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="text-white hover:text-[#DBC078] transition-colors">{t.nav.contact}</a>
+        <button onClick={onAboutClick} className="text-white hover:text-[#DBC078] transition-colors">{t.nav.aboutUs}</button>
         <button onClick={toggleLanguage} className="flex items-center space-x-1 text-white hover:text-[#DBC078] transition-colors">
           <Globe size={20} />
           <span>{language === 'en' ? 'ESP' : 'ENG'}</span>

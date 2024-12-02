@@ -7,6 +7,7 @@ export const translations: Record<string, Translations> = {
       ourPhilosophy: "Our Philosophy",
       services: "Services",
       contact: "Contact",
+      aboutUs: "About Us"
     },
     hero: {
       subtitle: "WEALTH MANAGEMENT",
@@ -125,7 +126,7 @@ export const translations: Record<string, Translations> = {
     },
     aboutUs: {
       title: "About Us",
-      summary: "Juan Otero is an investor with over 15 years of experience, specializing in emerging markets, fixed income and corporate analysis. Former Principal at PGIM Fixed Income and Senior Analyst at Temasek's Seatown Holdings.",
+      summary: "is an investor with over 15 years of experience, specializing in emerging markets, fixed income and corporate analysis. Former Principal at PGIM Fixed Income and Senior Analyst at Temasek's Seatown Holdings.",
       expertise: {
         fixedIncome: {
           title: "Asset Management Expert",
@@ -175,6 +176,7 @@ export const translations: Record<string, Translations> = {
       ourPhilosophy: "Nuestra Filosofía",
       services: "Servicios",
       contact: "Contacto",
+      aboutUs: "Sobre Nosotros"
     },
     hero: {
       subtitle: "GESTIÓN PATRIMONIAL",
@@ -293,7 +295,7 @@ export const translations: Record<string, Translations> = {
     },
     aboutUs: {
       title: "Sobre Nosotros",
-      summary: "Juan Otero es un inversor con más de 15 años de experiencia, especializado en mercados emergentes, renta fija y análisis corporativo. Ex Principal en PGIM Fixed Income y Analista Senior en Seatown Holdings de Temasek.",
+      summary: "es un inversor con más de 15 años de experiencia, especializado en mercados emergentes, renta fija y análisis corporativo. Ex Principal en PGIM Fixed Income y Analista Senior en Seatown Holdings de Temasek.",
       expertise: {
         fixedIncome: {
           title: "Experto en Gestión de Activos",
