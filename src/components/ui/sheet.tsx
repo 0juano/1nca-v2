@@ -91,15 +91,12 @@ export function SheetContent({ children, side = 'right', className }: SheetConte
 
   React.useEffect(() => {
     if (open) {
-      document.body.style.overflow = 'hidden';
       document.body.style.paddingRight = 'env(safe-area-inset-right)';
     } else {
-      document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     }
 
     return () => {
-      document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     };
   }, [open]);
@@ -110,7 +107,7 @@ export function SheetContent({ children, side = 'right', className }: SheetConte
         <>
           <motion.div
             key="overlay"
-            className="fixed inset-0 bg-black/95 z-[99] backdrop-blur-sm"
+            className="fixed inset-0 bg-black/50 z-[99] backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -119,7 +116,7 @@ export function SheetContent({ children, side = 'right', className }: SheetConte
           <motion.div
             key="content"
             className={cn(
-              "fixed z-[100] outline-none shadow-xl bg-[#222831]",
+              "fixed z-[100] outline-none shadow-xl bg-[#222831] overflow-y-auto",
               side === 'right' && "top-0 right-0 h-screen w-[280px]",
               side === 'left' && "top-0 left-0 h-screen w-[280px]",
               side === 'top' && "top-0 left-0 w-full h-[300px]",

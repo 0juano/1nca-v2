@@ -62,7 +62,7 @@ export function MobileNav({ t, toggleLanguage }: MobileNavProps) {
                   <X size={24} />
                 </Button>
               </div>
-              <nav className="flex flex-col gap-8">
+              <nav className="flex flex-col gap-8 pl-2">
                 <a 
                   href="#about" 
                   onClick={(e) => handleNavClick(e, 'about')}
