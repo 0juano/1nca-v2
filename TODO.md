@@ -11,9 +11,9 @@
 - [ ] Add newsletter subscription system for market updates and insights
   - [ ] Integrate with email service provider (e.g., Mailchimp, SendGrid)
   - [ ] Set up weekly market insights newsletter template
-- [ ] Add "About Us" section with team photos and bios for authenticity and trust-building
-- [ ] Include client testimonials section to showcase real experiences
-- [ ] Add logos section displaying previous work experience and institutional background
+- [x] Add "About Us" section with team photos and bios for authenticity and trust-building
+- [x] Include client testimonials section to showcase real experiences
+- [x] Add logos section displaying previous work experience and institutional background
 
 ## Completed
 - [x] Initial project setup
