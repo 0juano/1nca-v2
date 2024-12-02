@@ -17,6 +17,7 @@ interface SheetContentProps {
   children: ReactNode;
   side?: 'left' | 'right' | 'top' | 'bottom';
   className?: string;
+  onClose?: () => void;
 }
 
 const SheetContext = React.createContext<{
@@ -63,8 +64,33 @@ export function SheetTrigger({ asChild, children }: SheetTriggerProps) {
   );
 }
 
-export function SheetContent({ children, side = 'right', className }: SheetContentProps) {
+export function SheetContent({ children, side = 'right', className, onClose }: SheetContentProps) {
   const { open, setOpen } = React.useContext(SheetContext);
+
+  const handleClose = React.useCallback(() => {
+    setOpen(false);
+    onClose?.();
+  }, [setOpen, onClose]);
+
+  // Handle clicks outside
+  React.useEffect(() => {
+    if (!open) return;
+
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('[data-sheet-content]') === null) {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [open, handleClose]);
 
   const slideVariants = {
     right: {
@@ -111,10 +137,10 @@ export function SheetContent({ children, side = 'right', className }: SheetConte
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setOpen(false)}
           />
           <motion.div
             key="content"
+            data-sheet-content
             className={cn(
               "fixed z-[100] outline-none shadow-xl bg-[#222831] overflow-y-auto",
               side === 'right' && "top-0 right-0 h-screen w-[280px]",
