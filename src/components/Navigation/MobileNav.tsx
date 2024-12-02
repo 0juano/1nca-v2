@@ -52,11 +52,25 @@ export function MobileNav({ t, toggleLanguage, onAboutClick }: MobileNavProps) {
               <Menu size={24} />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-[#222831] border-l border-[#DBC078]/20">
-            <div className="flex flex-col h-full">
-              <nav className="flex flex-col space-y-4">
-                <a
-                  href="#about"
+          <SheetContent 
+            side="right" 
+            className="!bg-[#222831] border-l border-[#DBC078]/20 text-white"
+          >
+            <div className="flex flex-col h-full p-6">
+              <div className="flex justify-end mb-8">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => setIsOpen(false)}
+                  className="text-[#DBC078] hover:text-white -mr-2"
+                  aria-label="Close menu"
+                >
+                  <X size={24} />
+                </Button>
+              </div>
+              <nav className="flex flex-col gap-8 pl-2">
+                <a 
+                  href="#about" 
                   onClick={(e) => handleNavClick(e, 'about')}
                   className="text-lg text-white hover:text-[#DBC078] transition-colors"
                 >
