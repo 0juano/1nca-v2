@@ -55,6 +55,7 @@ export function MobileNav({ t, toggleLanguage, onAboutClick }: MobileNavProps) {
           <SheetContent 
             side="right" 
             className="!bg-[#222831] border-l border-[#DBC078]/20 text-white"
+            onClose={() => setIsOpen(false)}
           >
             <div className="flex flex-col h-full p-6">
               <div className="flex justify-end mb-8">
