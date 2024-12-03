@@ -66,6 +66,30 @@ export function SheetTrigger({ asChild, children }: SheetTriggerProps) {
 export function SheetContent({ children, side = 'right', className }: SheetContentProps) {
   const { open, setOpen } = React.useContext(SheetContext);
 
+  const handleClose = React.useCallback(() => {
+    setOpen(false);
+  }, [setOpen]);
+
+  // Handle clicks outside
+  React.useEffect(() => {
+    if (!open) return;
+
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('[data-sheet-content]') === null) {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [open, handleClose]);
+
   React.useEffect(() => {
     if (open) {
       document.body.style.paddingRight = 'env(safe-area-inset-right)';
@@ -111,12 +135,10 @@ export function SheetContent({ children, side = 'right', className }: SheetConte
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setOpen(false)}
-            onMouseDown={() => setOpen(false)}
-            onTouchStart={() => setOpen(false)}
           />
           <motion.div
             key="content"
+            data-sheet-content
             className={cn(
               "fixed z-[100] outline-none shadow-xl bg-[#222831] overflow-y-auto",
               side === 'right' && "top-0 right-0 h-screen w-[280px]",
@@ -130,7 +152,6 @@ export function SheetContent({ children, side = 'right', className }: SheetConte
             exit="exit"
             variants={slideVariants[side]}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            onClick={(e) => e.stopPropagation()}
           >
             {children}
           </motion.div>
