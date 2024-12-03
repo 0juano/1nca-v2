@@ -9,10 +9,10 @@ import { Services } from './components/sections/Services';
 import { Contact } from './components/sections/Contact';
 import { Footer } from './components/Footer';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { AboutUsModal } from './components/AboutUsModal';
+// import { AboutUsModal } from './components/AboutUsModal';  // Temporarily hidden
 
 function App() {
-  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  // const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);  // Temporarily hidden
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -42,7 +42,7 @@ function App() {
           t={t} 
           language={language} 
           toggleLanguage={toggleLanguage}
-          onAboutClick={() => setIsAboutModalOpen(true)}
+          onAboutClick={() => {}} // Temporarily disabled
         />
         <main id="main-content" role="main" aria-label="Main content">
           <Hero t={t} y={y} />
@@ -55,11 +55,13 @@ function App() {
         </main>
         <Footer t={t} role="contentinfo" />
         
+        {/* Temporarily hidden
         <AboutUsModal 
           isOpen={isAboutModalOpen}
           onClose={() => setIsAboutModalOpen(false)}
           t={t}
         />
+        */}
         
         <style>
           {`

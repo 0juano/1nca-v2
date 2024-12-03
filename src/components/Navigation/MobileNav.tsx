@@ -98,12 +98,14 @@ export function MobileNav({ t, toggleLanguage, onAboutClick }: MobileNavProps) {
                 >
                   {t.nav.contact}
                 </a>
+                {/* Temporarily hidden
                 <button
                   onClick={handleAboutClick}
                   className="text-lg text-left text-white hover:text-[#DBC078] transition-colors"
                 >
                   {t.nav.aboutUs}
                 </button>
+                */}
               </nav>
             </div>
           </SheetContent>
