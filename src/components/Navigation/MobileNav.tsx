@@ -53,8 +53,8 @@ export function MobileNav({ t, toggleLanguage, onAboutClick }: MobileNavProps) {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-[#222831] border-l border-[#DBC078]/20">
-            <div className="flex flex-col h-full">
-              <nav className="flex flex-col space-y-4">
+            <div className="flex flex-col h-full p-4">
+              <nav className="flex flex-col space-y-4 pl-2">
                 <a
                   href="#about"
                   onClick={(e) => handleNavClick(e, 'about')}
